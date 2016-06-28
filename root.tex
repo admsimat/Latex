@@ -1,0 +1,1207 @@
+\RequirePackage[l2tabu,orthodox]{nag}
+
+
+
+\documentclass[11pt]{amsart}
+
+
+
+%\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+%\usepackage{mathptmx}
+
+\usepackage{amsmath,amssymb,latexsym,soul,cite,mathrsfs}
+\usepackage{color,enumitem,graphicx, tikz, mathtools, microtype}
+
+%\usepackage{fancyvrb}
+%\usepackage{fancyhdr}
+%\usepackage[yyyymmdd,hhmmss]{datetime}
+\usepackage[left=2.65cm,right=2.65cm,top=3cm,bottom=3cm]{geometry}
+\renewcommand{\baselinestretch}{1.04}
+
+%\usepackage[hyperref]{backref}
+\usepackage{color,enumitem,graphicx}
+\usepackage[colorlinks=true,urlcolor=green,citecolor=green,linkcolor=green,linktocpage,pdfpagelabels,bookmarksnumbered,bookmarksopen]{hyperref}
+\usepackage[english]{babel}
+\usepackage[initials]{amsrefs}
+
+
+
+
+
+
+\usepackage[notref,notcite]{showkeys}
+%\usepackage{refcheck}
+\linespread{1.5}
+
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem{definition}[theorem]{Definition}
+%\theoremstyle{definition}
+%\newtheorem{remark}[theorem]{Remark}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+
+
+
+
+
+%\DeclareMathOperator{\tr}{tr}
+
+
+
+
+
+
+\title[Concave-convex nonlinearities]{Concave-convex nonlinearities for some nonlinear fractional equations involving the Bessel operator}
+\author{Simone Secchi}
+\address{Dipartimento di Matematica e Applicazioni, Universit\`a degli Studi di Milano Bicocca, via Cozzi 55, 20255 Milano, Italy}
+\email{Simone.Secchi@unimib.it}
+%\thanks{Supported by FIRB 2012 ``Dispersive equations: Fourier analysis and variational methods'' and by PRIN 2012 ``Aspetti
+%variazionali e perturbativi nei problemi differenziali
+%nonlineari''}
+\date{\today}
+\keywords{Fractional Sobolev Spaces, Bessel spaces, Fractional Laplacian}
+\subjclass[2010]{35J60,35Q55,35S05}
+%\dedicatory{Dedicated to Francesca}
+
+
+\begin{document}
+
+
+
+\begin{abstract}
+We prove some existence results for a class of nonlinear fractional equations of the form
+\begin{equation*} 
+\left( I-\Delta \right)^{\alpha} u + \lambda V(x) u= f(x,u)+\mu \xi(x)|u|^{p-2}u \quad \text{in $\mathbb{R}^N$}
+\end{equation*}
+under suitable assumptions on $V$, $f$, and $\xi$.
+\end{abstract}
+\maketitle
+
+
+
+
+
+
+
+
+
+
+\section{Introduction}
+
+In this paper we provide some existence results for a class of nonlinear fractional equations of the form
+\begin{equation} \label{eq:1}
+\left( I-\Delta \right)^{\alpha} u + \lambda V(x) u= f(x,u)+\mu \xi(x)|u|^{p-2}u \quad \text{in $\mathbb{R}^N$}
+\end{equation}
+where $0<\alpha <1$, $V \colon \mathbb{R}^N \to \mathbb{R}$, $f \colon \mathbb{R}^N \times \mathbb{R} \to \mathbb{R}$ are continuous functions, $\xi \in L^{2/(2-p)}(\mathbb{R}^N)$, $\lambda >0$, $\mu >0$ and $1<p<2$. We will furthermore assume that
+\begin{itemize}
+	\item[(f1)] $|f(x,u)| \leqslant c ( 1+|u|^{q-1})$ for some $q \in (2,2_\alpha^*)$, where $2_\alpha^* = 2N/(N-2\alpha)$;
+	\item[(f2)] $f(x,u)=o(|u|)$ as $u \to 0$ uniformly with respect to $x \in \mathbb{R}^N$;
+	\item[(f3)] there exists a constant $\vartheta > 2$ such that $0 < \vartheta F(x,u) \leqslant u f(x,u)$ for every $x \in \mathbb{R}^N$ and $u \neq 0$, where $F(x,u)=\int_{0}^{u} f(x,s)\, ds$.
+\end{itemize}
+We also define
+\begin{equation} \label{eq:1.2}
+\mathscr{F}(x,u) = \frac{1}{2} f(x,u) - F(x,u)
+\end{equation}
+for $(x,u) \in \mathbb{R} \times \mathbb{R}$.
+The following technical result will be useful in the sequel.
+\begin{lemma} \label{lem:1.1}
+  For every $\tau \in \left( \max \left\{ 1, \frac{N}{2\alpha} \right\},\frac{q}{q-2} \right)$ there exists $R > 0$ such that $|u| \geqslant R$ implies
+\[
+\frac{|f(x,u)|^\tau}{|u|^\tau} \leqslant \mathscr{F}(x,u).
+\]
+\end{lemma}
+\begin{proof}
+Indeed, $|f(x,u)| \leqslant C |u|^{q-1}$ if $|u|$ is large enough. Hence, if $R$ is so large that
+\[
+|u| \geqslant R \quad\text{implies}\quad \frac{1}{\vartheta} \leqslant \frac{1}{2} - \frac{C^{\tau-1}}{|u|^{q-(q-2)\tau}},
+\]
+then
+\begin{equation*}
+0 \leqslant F(x,u) \leqslant \frac{1}{\vartheta} u f(x,u) \leqslant \left( \frac{1}{2} - \frac{C^{\tau-1}}{|u|^{q-(q-2)\tau}} \right) u f(x,u) \leqslant \left( \frac{1}{2} - \frac{|f(x,u)|^{\tau-1}}{|u|^{\tau+1}} \right) u f(x,u).
+\end{equation*}
+The proof is complete.
+\end{proof}
+
+\noindent \textbf{Notation.}
+\begin{enumerate}
+	% \item Integral over the whole space will be denoted by $\int$.
+	\item The letter $C$ will stand for a generic positive constant that
+	may vary from line to line.
+	\item The symbol $\|\cdot \|_p$ will be reserved for the norm in
+	$L^p(\mathbb{R}^N)$.
+	\item The operator $D$ will be reserved for the (Fr\'{e}chet)
+	derivative, also for functions of a single real variable.
+	\item The symbol $\mathcal{L}^N$ will be reserved for the Lebesgue
+	$N$-dimensional measure.
+	\item The Fourier transform of a function $f$ will be denoted by $\mathcal{F}u$.
+\end{enumerate}
+
+\section{Preliminaries and functional setting} \label{sec:2}
+For $\alpha>0$ we introduce the \emph{Bessel function space}
+\[
+L^{\alpha,2}(\mathbb{R}^N) = \left\{ f \colon f=G_\alpha * g
+\ \text{for some $g \in L^2(\mathbb{R}^N)$} \right\},
+\]
+where the Bessel convolution kernel is defined by
+\begin{equation} \label{eq:G}
+G_\alpha (x) = 
+\frac{1}{(4 \pi )^{\alpha /2}\Gamma(\alpha/2)} \int_0^\infty \exp \left( -\frac{\pi}{t} |x|^2 \right) \exp \left( -\frac{t}{4\pi} \right) t^{\frac{\alpha - N}{2}-1} \, dt
+\end{equation}
+The norm of this Bessel space is $\|f\| = \|g\|_2$ if $f=G_\alpha *
+g$. The operator $(I-\Delta)^{-\alpha} u = G_{2\alpha} *u$ is usually
+called Bessel operator of order $\alpha$.
+
+In Fourier variables the same operator reads
+\begin{equation} \label{eq:19}
+G_\alpha = \mathcal{F}^{-1} \circ \left( \left(1+|\xi|^2 \right)^{-\alpha /2} \circ \mathcal{F} \right),
+\end{equation}
+so that
+\[
+\|f\| = \left\| (I-\Delta)^{\alpha /2} f \right\|_2.
+\]
+For more detailed information, see \cites{Adams, Stein} and the references therein.
+\begin{remark}
+	In the paper \cite{Fall} the pointwise formula
+	\begin{equation} \label{eq:21}
+	(I-\Delta)^\alpha u(x) = 
+	c_{N,\alpha} \operatorname{P.V.} \int_{\mathbb{R}^N} \frac{u(x)-u(y)}{|x-y|^{\frac{N+2\alpha}{2}}} K_{\frac{N+2\alpha}{2}}(|x-y|) \, dy + u(x)
+	\end{equation}
+	was derived for functions $u \in C_c^2(\mathbb{R}^N)$. 
+	Here $c_{N,\alpha}$ is a positive constant depending only on $N$ and $\alpha$, 
+	P.V. denotes the principal value of the singular integral, and $K_\nu$ is the modified Bessel 
+	function of the second kind with order $\nu$ (see \cite{Fall}*{Remark 7.3} for more details). 
+	Since a closed formula for $K_\nu$ is unknown, equation (\ref{eq:21}) is not particularly useful 
+	for our purposes.
+\end{remark}
+We summarize the embedding properties of Bessel spaces (see \cite[Theorem 3.1]{Felmer}, \cite[Chapter V, Section 3]{Stein},\cite[Section 4]{Strichartz}).
+
+\begin{theorem} 
+	\label{th:1}
+	\begin{enumerate}
+		\item $L^{\alpha,2}(\mathbb{R}^N) = W^{\alpha,2}(\mathbb{R}^N) =
+		H^\alpha (\mathbb{R}^N)$.
+		\item If $\alpha \geq 0$ and $2 \leq q \leq 2_\alpha^*=2N/(N-2\alpha)$, then
+		$L^{\alpha,2}(\mathbb{R}^N)$ is continuously embedded into $L^q(\mathbb{R}^N)$; if $2 \leq q < 2_\alpha^*$ then the embedding is locally compact.
+		\item Assume that $0 \leq \alpha \leq 2$ and $\alpha > N/2$. If
+		$\alpha -N/2 >1$ and $0< \mu \leq \alpha - N/2-1$, then
+		$L^{\alpha,2}(\mathbb{R}^N)$ is continuously embedded into
+		$C^{1,\mu}(\mathbb{R}^N)$. If $\alpha -N/2 <1$ and $0 < \mu \leq
+		\alpha -N/2$, then $L^{\alpha,2}(\mathbb{R}^N)$ is continuously
+		embedded into $C^{0,\mu}(\mathbb{R}^N)$.
+	\end{enumerate}
+\end{theorem}
+\begin{remark}
+	Although the Bessel space $L^{\alpha,2}(\mathbb{R}^N)$ is topologically undistinguishable from the Sobolev fractional space $H^\alpha(\mathbb{R}^N)$, we will not confuse them, since our equation involves the Bessel norm.
+\end{remark}
+%
+%We collect here a couple of technical lemmas taken from the paper \cite{Palatucci}.
+%
+%\begin{lemma} \label{lem:1}
+%	Let $0<\alpha < N/2$ and let $u \in
+%	L^{\alpha,2}(\mathbb{R}^N)$. Let $\varphi \in C_0^\infty
+%	(\mathbb{R}^N)$ and for each $R>0$ let
+%	$\varphi_R(x)=\varphi(R^{-1} x)$. Then $\lim_{R \rightarrow 0}
+%	\varphi_R u =0$ in $L^{\alpha,2}(\mathbb{R}^N)$. If, in
+%	addition, $\varphi$ equals one in a neighborhood of the
+%	origin, then $\lim_{R \rightarrow +\infty} \varphi_R u =0$ in
+%	$L^{\alpha,2}(\mathbb{R}^N)$.
+%\end{lemma}
+%\begin{proof}
+%	Since $L^{\alpha,2}(\mathbb{R}^N)$ is equivalent to
+%	$H^s(\mathbb{R}^N)$, the proof of \cite{Palatucci}*{Lemma 5} carries
+%	over with only minor modifications.
+%\end{proof}
+%
+%\begin{lemma} \label{lem:2}
+%	Let $0<\alpha<N/2$, let $\Omega$ be a bounded open subset of
+%	$\mathbb{R}^N$ and let $\varphi \in
+%	C_0^\infty(\mathbb{R}^N)$. Then the commutator
+%	$[\varphi,(I-\Delta)^{\alpha/2}] \colon
+%	L^{\alpha,2}(\mathbb{R}^N) \to L^2(\mathbb{R}^N)$ is a compact
+%	operator.
+%\end{lemma}
+%\begin{proof}
+%	It suffices to remark that the proof of \cite{Palatucci}*{Lemma 6} actually contains a proof of our statement.
+%\end{proof}
+
+
+
+\begin{definition}
+	We say that $u \in L^{\alpha,2}(\mathbb{R}^N)$ is a weak solution to (\ref{eq:1}) if
+	\begin{multline*}
+		\int_{\mathbb{R}^N} (I-\Delta)^{\alpha /2} u \ (I-\Delta)^{\alpha/2} v \, dx + \int_{\mathbb{R}^N} V(x) u(x) v(x) \, dx \\
+		= \int_{\mathbb{R}^N} f(x,u(x))v(x) \, dx  + \int_{\mathbb{R}^N} \xi(x) |u|^{p-2}uv \, dx
+	\end{multline*}
+	for all $v \in L^{\alpha,2}(\mathbb{R}^N)$, or, equivalently,
+	\begin{multline*}
+	\int_{\mathbb{R}^N} (1+|\xi|^2)^\alpha \mathcal{F}u(\xi) \mathcal{F}v(\xi) \, d\xi + \int_{\mathbb{R}^N} V(x) u(x) v(x) \, dx \\
+	= \int_{\mathbb{R}^N} f(x,u(x))v(x) \, dx  + \int_{\mathbb{R}^N} \xi(x) |u|^{p-2}uv \, dx.
+	\end{multline*}
+\end{definition}
+
+\section{Coercive electric potential}
+
+In this section we always deal with a \emph{fixed} value of $\lambda>0$.
+%
+\begin{definition}
+  We say that $V \colon \mathbb{R}^N \to \mathbb{R}$ is a coercive
+  electric potential if
+\begin{itemize}
+		\item[(V1)] $\operatorname{ess\,inf}_{x \in \mathbb{R}^N} V(x) > 0$;
+		\item[(V2)]	$\lim\limits_{|y| \to +\infty} \int_{B(y,1)} \frac{dx}{V(x)}=0$, where $B(y,1) = \left\{ x \in \mathbb{R}^N \mid |y-x|<1 \right\}$.
+\end{itemize}
+\end{definition}
+The term \emph{coercive} has been used because the usual coercivity condition
+\[
+\lim_{|x| \to +\infty} V(x) = +\infty
+\]
+immediately implies (V2).
+\begin{remark}
+	Of course the choice of $B(y,1)$ is rather arbitrary: any ball of fixed radius $r>0$ would do the same job.
+\end{remark}
+Define the weighted Sobolev space
+\[
+H = \left\{ u \in L^{\alpha,2}(\mathbb{R}^N) \mid \int_{\mathbb{R}^N} V(x) |u(x)|^2 \, dx < +\infty \right\}
+\]
+equipped with the norm
+\[
+\|u\|_H^2 = \int_{\mathbb{R}^N}
+\left| (I-\Delta)^{\alpha/2} u \right|^2 \, dx + \int_{\mathbb{R}^N} V(x) |u(x)|^2 \, dx.
+\]
+Since the norm $u \mapsto \int_{\mathbb{R}^N} \left| (I-\Delta)^{\alpha/2} u \right|^2 \, dx$ already contains the $L^2$ norm, we can allow the inequality $V > 0$ to be true up to a subset of measure zero. In particular $V$ may vanish on a curve, but not on an open set.
+% 
+\begin{remark}
+	For a general measurable subset $\Omega$ of $\mathbb{R}^N$, the Bessel space $L^{s,2}(\Omega)$ is defined as the set of restrictions to $\Omega$ of functions from $L^{s,2}(\mathbb{R}^N)$. This will be useful in the following Proposition.
+\end{remark}
+\begin{proposition} \label{prop:2.2}
+	If $V$ is a compact electric potential and $2\leqslant q<2_\alpha^*$, then the space $H$ is compactly embedded into $L^q(\mathbb{R}^N)$.
+\end{proposition}
+\begin{proof}
+	In the proof we will discard the set where $V \leqslant 0$, since it has zero measure. We follow closely \cite{MR0481616}. Let $\{u_n\}_n$ be a sequence from $H$ such that $u_n \rightharpoonup 0$ as $n \to +\infty$. For some $M>0$, we have
+	\[
+	\int_{\mathbb{R}^N}V(x)|u(x)|^2 \, dx \leq M \quad\text{for all $n\in \mathbb{N}$}.
+	\]
+	We define
+	\begin{align*}
+	\Theta_m &= \left\{ A \subset \mathbb{R}^N \mid \text{$A$ is measurable and $\lim_{|x| \to +\infty} \mathcal{L}^N (A \cap B(x,1))=0$} \right\}\\
+	\Theta_0 &= \left\{ \Omega \in \Theta_m \mid \text{$\Omega$ is open}\right\}.
+	\end{align*}
+	It follows from assumption (V1) that $H$ embeds continuously into $L^{s,2}(\mathbb{R}^N)$, and therefore
+	the restriction of $u_n$ to $\Omega$ converges weakly to zero in $L^{s,2}(\Omega)$ for any $\Omega \in \Theta_0$. We can refer to Theorem 2.4 of \cite{MR0312241} and conclude that $(u_n)_{|\Omega} \to 0$ strongly in $L^2(\Omega)$ for every $\Omega \in \Theta_0$.
+	
+	Now pick any $\varepsilon>0$. We compute for all $n \in \mathbb{N}$:
+	\begin{equation*}
+	\left\| u_n \right\|_{L^2(\mathbb{R}^N)}^{2} = \int_{\mathbb{R}^N} \frac{1}{V(x)} \left| u_n(x) \right|^2 V(x) \, dx \leqslant M \varepsilon + \int_{A_\varepsilon} \left| u_n(x) \right|^2 \, dx,
+	\end{equation*}
+	where
+	\[
+	A_\varepsilon = \left\{ x \in \mathbb{R}^N \mid V(x) < 1/\varepsilon \right\}.
+	\]
+	It follows from assumption (V2) that $A_\varepsilon \in \Theta_m$. We claim that there exists an open set $\Omega_\varepsilon \in \Theta_0$ such that $A_\varepsilon \subset \Omega_\varepsilon$. If this is the case, we conclude easily that
+	\[
+	\limsup_{n \to +\infty} \left\| u_n \right\|_{L^2(\mathbb{R}^N)}^{2} \leqslant M \varepsilon + 
+	\int_{\Omega_\varepsilon} \left| u_n(x) \right|^2 \, dx \leqslant M \varepsilon.
+	\]
+	To prove the claim, we introduce a countable family $\{\mathscr{O}_k\}_k$ of open sets such that $\mathscr{O}_1 = B(0,1)$, $A_\varepsilon \cap (\overline{B(0,k+1)}\setminus B(0,k)) \subset \mathscr{O}_{k+1}$ and 
+	\[
+	\mathcal{L}^N \left( \mathscr{O}_{k+1} \setminus \left( A_\varepsilon \cap (\overline{B(0,k+1)}\setminus B(0,k))
+	\right)
+	\right) < \frac{1}{k}.
+	\]
+	We put $\Omega_\varepsilon = \bigcup_{k=1}^\infty \mathscr{O}_k$. Now,
+	\[
+	\mathcal{L}^N (B(x,1) \cap \Omega_\varepsilon)  \leqslant \mathcal{L}^N( B(x,1) \cap A_\varepsilon) + \mathcal{L}^N ((\Omega_\varepsilon \setminus A_\varepsilon) \cap B(x,1)).
+	\]
+	We need to check that $\lim_{|x| \to +\infty} \mathcal{L}^N ((\Omega_\varepsilon \setminus A_\varepsilon) \cap B(x,1)) =0$. Let $x \in \mathbb{R}^N$ and let $n_1$ be the largest integer such that $n_1 \leqslant |x|-1$. We deduce from the properties of $\{\mathscr{O}_k\}_k$ that
+	\[
+	\mathcal{L}^N ((\Omega_\varepsilon \setminus A_\varepsilon) \cap B(x,1)) \leqslant \mathcal{L}^N \left( \bigcup_{k=n_1+1}^{n_1+3} \mathscr{O}_k \setminus A_\varepsilon \right) < \frac{3}{n_1} < \frac{3}{|x|-2}.
+	\]
+	The claim is proved.
+	
+	So far we have shown that $H$ is compactly embedded into $L^2(\mathbb{R}^N)$. If $q \in [2,2_\alpha^*)$, we recall that $H$ is continuously embedded into $L^{2_\alpha^*}(\mathbb{R}^N)$ and the compactness of the embedding into $L^q(\mathbb{R}^N)$ follows from standard interpolation inequalities in Lebesgue spaces.
+\end{proof}
+\begin{theorem} \label{th:2.3}
+	Assume that (f1), (f2), (f3), (V1) and (V2) hold. There exists $\mu_0$ such that for every $\lambda>0$ and every $\mu \in (0,\mu_0)$, there exists at least a nontrivial solution to \eqref{eq:1}.
+\end{theorem}
+We will prove \ref{th:2.3} by variational methods. First of all, we associate to equation \eqref{eq:1} the Euler functional $\Phi \colon H \to \mathbb{R}$ defined by
+\begin{equation} \label{eq:2.1}
+\Phi (u) = \frac{1}{2} \int_{\mathbb{R}^N} \left| (I-\Delta)^{\alpha/2}u \right|^2 \, dx + \frac{\lambda}{2} \int_{\mathbb{R}^N} V(x) |u(x)|^2 \, dx - \Psi (u),
+\end{equation}
+where
+\begin{equation*}
+\Psi (u) = \int_{\mathbb{R}^N} F(u(x))\, dx + \frac{\mu}{p} \int_{\mathbb{R}^N} \xi(x) |u(x)|^{p} \, dx.
+\end{equation*}
+It is easy to check that $\Phi$ is continuously differentiable on $H$ under our assumptions, and that weak solutions to \eqref{eq:1} correspond to critical points of $\Phi$.
+\begin{lemma} \label{lem:2.4}
+  Let us retain the assumption of Theorem \ref{th:2.3}.
+  \begin{itemize}
+    \item[(i)] There exist three positive constants $\mu_0$, $\varrho$ and $\eta$ such that $\Phi(u) \geqslant \eta$ for all $u \in H$ with $\|u\|_H =\varrho$ and all $\mu \in (0,\mu_0)$.
+    \item[(ii)] Let $\varrho>0$ be the number constructed in step (i). There exists $e \in H$ such that $\|e\|_H > \varrho$ and $\Phi(e) < 0$ for all $\mu \geqslant 0$.
+\end{itemize}
+\end{lemma}
+\begin{proof}
+Let us prove (i). For any fixed $\varepsilon>0$, assumptions (f1) and (f2) imply that there is a positive constant $C_\varepsilon$ such that
+\begin{equation*}
+|F(x,u)| \leq \frac{\varepsilon}{2} |u|^2 + \frac{C_\varepsilon}{q}|u|^q
+\end{equation*}
+for all $x \in \mathbb{R}^N$ and $u \in \mathbb{R}$. Integrating and using the Sobolev inequality, we get
+\begin{align*}
+\int_{\mathbb{R}^N} F(x,u)\, dx &\leqslant \frac{\varepsilon}{2} \int_{\mathbb{R}^N} |u(x)|^2 \, dx + \frac{C_\varepsilon}{q} \int_{\mathbb{R}^N} |u(x)|^q \, dx \\
+&\leqslant C \left(
+\frac{\varepsilon}{2} \|u\|_H^2 + \frac{C_\varepsilon}{q} \|u\|_H^q \, dx
+\right).
+\end{align*}
+Therefore
+\begin{align*}
+\Phi(u) &= \frac{1}{2} \|u\|_H^2 - \int_{\mathbb{R}^N} F(x,u(x))\, dx - \frac{\mu}{p} \int_{\mathbb{R}^N} \xi(x)|u(x)|^p \, dx \\
+&\geqslant \frac{1}{2} \|u\|_H^2 -C \left(
+\frac{\varepsilon}{2} \|u\|_H^2 + \frac{C_\varepsilon}{q} \|u\|_H^q \, dx
+\right) - \frac{\mu}{p} C\|\xi\|_{L^{2/(2-p)}(\mathbb{R}^N)} \|u\|_H^p \\
+&= \|u\|_H^p \left(
+\frac{1}{2} \left( 1- C \varepsilon \right) \|u\|_H^{2-p} - \frac{C C_\varepsilon}{q} \|u\|_H^{q-p} - \frac{\mu}{p} C\|\xi\|_{L^{2/(2-p)}(\mathbb{R}^N)} 
+\right).
+\end{align*}
+We select (for instance) $\varepsilon = \frac{1}{2C}$ and maximize the function
+\[
+g(t) = \frac{1}{4} t^{2-p} - \frac{C C_\varepsilon}{q}t^{q-p}
+\]
+for $t \geqslant 0$. It is an exercise to check that the maximum is attained at some $\varrho>0$ where $g(\varrho)>0$. We conclude by selecting $\mu_0>0$ so small that $g(\varrho) - \frac{\mu}{p} C\|\xi\|_{L^{2/(2-p)}(\mathbb{R}^N)} >0$.
+
+To prove (ii), we recall that 
+\begin{equation*}
+|F(x,u)| \leqslant \frac{\varepsilon}{2} |u|^2 + \frac{C_\varepsilon}{q}|u|^q
+\end{equation*}
+for all $x \in \mathbb{R}^N$ and $u \in \mathbb{R}$. By assumption (f3), for some constant $c>0$ we have
+\[
+F(x,u) \geqslant c \left( |u|^\vartheta - |u|^2 \right)
+\]
+for all $(x,u) \in \mathbb{R}^N \times \mathbb{R}$. Given $u \in H$ and $t>0$, we compute
+\begin{align*}
+\Phi(tu) &= \frac{t^2}{2} \|u\|_H^2 - \int_{\mathbb{R}^N} F(x,tu(x))\, dx - \frac{\mu}{p} t^p \int_{\mathbb{R}^N} \xi(x)|u(x)|^p \, dx \\
+&\leqslant  \frac{t^2}{2} \|u\|_H^2  - c t^\vartheta \int_{\mathbb{R}^N} |u(x)|^\vartheta \, dx + ct^2 \int_{\mathbb{R}^N} |u(x)|^2 \, dx - \frac{\mu}{p} t^p \int_{\mathbb{R}^N} \xi(x)|u(x)|^p \, dx.
+\end{align*}
+Recalling that $1<p<2$ and $\vartheta>2$, we can let $t \to +\infty$ and deduce that $\Phi(tu) \to -\infty$. The conclusion is now immediate.
+\end{proof}
+%
+\begin{proof}[Proof of Theorem \ref{th:2.3}]
+	For $0<\mu < \mu_0$, the functional $\Phi$ satisfies the geometric assumptions of the Mountain Pass Theorem. As a consequence, there exist a Palais-Smale sequence $\{u_n\}_n$ from $H$, i.e.
+	\begin{equation*}
+		\Phi(u_n) \to c, \qquad D\Phi(u_n) \to 0
+	\end{equation*}
+as $n \to +\infty$, where 
+\[
+c = \inf_{\gamma \in \Gamma} \sup_{t \in [0,1]} \Phi(\gamma(t)) \quad\text{and} \quad
+\Gamma = \left\{ \gamma \in C([0,1],H) \mid \gamma(0)=0, \ \gamma(1)=e 
+\right\}.
+\]
+We prove that $\{u_n\}_n$ is bounded. Indeed,
+\begin{multline*}
+1+c+\|u_n\|_H \geqslant \Phi(u_n) - \frac{1}{\vartheta} D \Phi (u_n)[u_n] \\
+ = \left( \frac{1}{2} - \frac{1}{\vartheta} \right) \|u_n\|_H^2 + \int_{\mathbb{R}^N} \left( \frac{1}{\vartheta} u_n(x) f(x,u_n(x))-F(x,u_n(x)) \right) \, dx + \left( \frac{1}{\vartheta}-\frac{1}{p} \right) \int_{\mathbb{R}^N} \mu \xi(x) |u_n(x)|^p \, dx.
+\end{multline*}
+Since
+\begin{multline*}
+\left( \frac{1}{p}-\frac{1}{\vartheta} \right) \mu \int_{\mathbb{R}^N} \xi(x) |u_n(x)|^p \, dx \leqslant \left( \frac{1}{p}-\frac{1}{\vartheta} \right) \mu \left( \int_{\mathbb{R}^N} |\xi(x)|^{\frac{2}{2-p}} \, dx \right)^{\frac{2-p}{2}} \left( \int_{\mathbb{R}^N} |u_n(x)|^2 \, dx
+\right)^{\frac{p}{2}} \\
+= \left( \frac{1}{p}-\frac{1}{\vartheta} \right) \mu \|\xi\|_{L^{2/(2-p)}(\mathbb{R}^N)} \|u_n\|_{L^2(\mathbb{R}^N)}^p \leqslant C \left( \frac{1}{p}-\frac{1}{\vartheta} \right) \mu  \|\xi\|_{L^{2/(2-p)}(\mathbb{R}^N)} \|u_n\|_H^p,
+\end{multline*}
+we derive that
+\begin{multline*}
+1+c+\|u_n\|_H +C \left( \frac{1}{p}-\frac{1}{\vartheta} \right) \mu  \|\xi\|_{L^{2/(2-p)}(\mathbb{R}^N)} \|u_n\|_H^p \\
+\geqslant \left( \frac{1}{2} - \frac{1}{\vartheta} \right) \|u_n\|_H^2 + \int_{\mathbb{R}^N} \left( \frac{1}{\vartheta} u_n(x) f(x,u_n(x))-F(x,u_n(x)) \right) \, dx \\
+\geqslant \left( \frac{1}{2} - \frac{1}{\vartheta} \right) \|u_n\|_H^2.
+\end{multline*}
+Since $1<p<2$, this inequality shows that $\{u_n\}_n$ is a bounded sequence in $H$. By Proposition \ref{prop:2.2} $\{u_n\}_n$ converges up to a subsequence (weakly in $H$ and) strongly in $L^2(\mathbb{R}^N)$ and in $L^q(\mathbb{R}^N)$ to some limit $u$. Since
+\[
+\int_{\mathbb{R}^N} \xi(x) |u_n(x)-u(x)|^p \, dx \leqslant \|\xi\|_{L^{2/(2-p)}(\mathbb{R}^N} \|u_n-u\|_{L^2(\mathbb{R}^N)}^p,
+\]
+it follows immediately that $\{u_n\}_n$ is relatively compact in $H$, or, in other words, that $\Phi$ satisfies the Palais-Smale condition. Hence $u$ is a critical point of $\Phi$, namely a weak solution to \eqref{eq:1}.
+\end{proof}	
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Solutions for large values of $\lambda$}
+
+In this section we want to solve equation \eqref{eq:1} under weaker conditions on the electric potential $V$. As we have seen in the previous Section, the compactness of $V$ yields the validity of the Palais-Smale condition almost for free. We will show that we can relax the assumptions on $V$, provided that the parameter $\lambda$ becomes sufficiently large. 
+
+Precisely, we will assume the following:
+\begin{itemize}
+	\item[(V3)] $V \geqslant 0$ on $\mathbb{R}^N$;
+	\item[(V4)] for some $b>0$, the Lebesgue measure of the set $V^b = \left\{ x \in \mathbb{R}^N \mid V(x) < b \right\}$ is finite;
+	\item[(V5)] the set\footnote{The notation $A^\circ$ is used to denote the interior of a set $A$.} $\Omega = \left(V^{-1} \left( \{0\} \right) \right)^\circ$ is nonempty and has a smooth boundary. Furthermore, $\overline{\Omega} = V^{-1}(\{0\})$.
+\end{itemize}
+\begin{theorem} \label{th:3.1}
+	Assume that (V3), (V4), (V5) and (f1), (f2) and (f3) are satisfied.	There exist two constants $\lambda_0>0$ and $\mu_0>0$ such that for every $\lambda > \lambda_0$ and every $0<\mu<\mu_0$ equation \eqref{eq:1} possesses at least two nontrivial solutions.
+\end{theorem}
+Again we will prove this result by means of variational methods. Since $\lambda$ is no longer fixed, we will use the notation $\Phi_\lambda$ for the Euler functional \eqref{eq:2.1}.
+
+We define the space
+\[
+\mathscr{H} = \left\{ u \in L^{\alpha,2}(\mathbb{R}^N) \mid \int_{\mathbb{R}^N} V(x) |u(x)|^2 \, dx < +\infty\right\} 
+\]
+endowed with the norm
+\[
+\|u\|_{\mathscr{H}}^2 = \int_{\mathbb{R}^{N}} \left| (I-\Delta)^{\alpha/2} \right|^2 \, dx + \int_{\mathbb{R}^N} V(x) |u(x)|^2 \, dx.
+\]
+For technical reasons, we will need to work with the norm
+\[
+\|u\|_\lambda^2 = \int_{\mathbb{R}^{N}} \left| (I-\Delta)^{\alpha/2} \right|^2 \, dx + \int_{\mathbb{R}^N} \lambda V(x) |u(x)|^2 \, dx,
+\]
+and we will write $\mathscr{H}_\lambda$ to denote the space $\mathscr{H}$ endowed with the norm $\| \cdot \|_\lambda$.
+\begin{lemma} \label{lem:3.2}
+	There exist two constants $\gamma_0>0$ and $\lambda_0>0$ such that for every $\lambda \geqslant \lambda_0$ there results
+	\[
+		\|u\|_{L^{\alpha,2}(\mathbb{R}^N)} \leqslant \gamma_0 \|u\|_\lambda
+	\]
+	for every $u \in \mathscr{H}_\lambda$.
+\end{lemma}
+\begin{proof}
+ Indeed, we get from the Sobolev embedding theorem
+ \begin{multline*}
+	 \int_{\mathbb{R}^N} |u(x)|^2 \, dx = \int_{V^b} 	 |u(x)|^2 \, dx + \int_{\mathbb{R}^N\setminus V^b}  |u(x)|^2 \, dx \\
+	 \leqslant \left(\mathcal{L}^N \left( V^b \right)\right)^{\frac{2\alpha}{N}} \left( \int_{\mathbb{R}^N} |u(x)|^{2_\alpha^*} \, dx \right)^{\frac{N-2\alpha}{2}}
+	 + \int_{\mathbb{R}^N\setminus V^b}  |u(x)|^2 \, dx \\
+	 \leqslant \left(\mathcal{L}^N \left( V^b \right)\right)^{\frac{2\alpha}{N}} \left( \int_{\mathbb{R}^N} |u(x)|^{2_\alpha^*} \, dx \right)^{\frac{N-2\alpha}{2}} + \frac{1}{\lambda b}\int_{\mathbb{R}^N\setminus V^b}  \lambda V(x) |u(x)|^2 \, dx \\
+	 \leqslant C \left(\mathcal{L}^N \left( V^b \right)\right)^{\frac{2\alpha}{N}}  \int_{\mathbb{R}^N} \left| (I-\Delta) u \right|^2 \, dx + \frac{1}{\lambda b}\int_{\mathbb{R}^N\setminus V^b}  \lambda V(x) |u(x)|^2 \, dx, 
+	 \end{multline*}	
+	 and therefore
+ \begin{multline*}
+ \int_{\mathbb{R}^N} \left| (I-\Delta)^{\alpha/2} u \right|^2 \, dx \leqslant \int_{\mathbb{R}^N} \left| (I-\Delta)^{\alpha/2} u \right|^2 \, dx + \int_{\mathbb{R}^N} |u(x)|^2 \, dx \\
+  \leqslant \left(1+ C \left(\mathcal{L}^N \left( V^b \right)\right)^{\frac{2\alpha}{N}} \right) \left(   \int_{\mathbb{R}^N} \left| (I-\Delta)^{\alpha/2} u \right|^2 \, dx + \int_{\mathbb{R}^N}  \lambda V(x) |u(x)|^2 \, dx \right) \\
+  = \gamma_0 \left(   \int_{\mathbb{R}^N} \left| (I-\Delta)^{\alpha/2} u \right|^2 \, dx + \int_{\mathbb{R}^N}  \lambda V(x) |u(x)|^2 \, dx \right)
+ \end{multline*}
+ whenever
+ \[
+ \lambda \geqslant \lambda_0 = \frac{1}{b} \frac{1}{1+ C \left(\mathcal{L}^N \left( V^b \right)\right)^{\frac{2\alpha}{N}}}.
+ \]	 
+\end{proof}
+\begin{corollary}
+	For all $s \in [2,2_\alpha^*)$, there exists a constant $\gamma_s >0$ such that $\|u\|_{L^s(\mathbb{R}^N)} \leqslant \gamma_s \|u\|_{L^{\alpha,2}(\mathbb{R}^N)}\leqslant \gamma_0 \gamma_s \|u\|_\lambda$ for every $u \in \mathscr{H}_\lambda$. 
+\end{corollary}
+\begin{proof}
+ It suffices to combine the Sobolev embedding theorem with Lemma \ref{lem:3.2}.	
+\end{proof}
+The mountain-pass geometry of $\Phi_\lambda$ is ensured by Lemma \ref{lem:2.4}. On the contrary, the Palais-Smale condition is now harder to prove, since no \emph{coerciveness} assumption on the electric potential has been made.		
+%
+\begin{lemma}
+	Suppose that $u_n \rightharpoonup u_0$ in $\mathscr{H}_\lambda$ as $n \to +\infty$. Then, up to a subsequence,
+	\begin{equation} \label{eq:3.1}
+		\Phi_\lambda(u_n) = \Phi_\lambda (u_n-u_0) + \Phi_\lambda(u_0)+o(1)
+	\end{equation}
+	and
+	\begin{equation}\label{eq:3.2}
+	D\Phi_\lambda(u_n) = D\Phi_\lambda (u_n-u_0) + D\Phi_\lambda(u_0)+o(1)	
+	\end{equation}
+	as $n \to +\infty$. In particular, if $\{u_n\}_n$ is a Palais-Smale sequence at level $d$, then
+	\begin{equation}\label{eq:3.3}
+	\Phi_\lambda(u_n-u_0) = d-\Phi_\lambda(u_0) +o(1), \quad D\Phi_\lambda(u_n-u_0) = o(1)
+	\end{equation}
+	as $n \to +\infty$, up to a subsequence.
+\end{lemma}
+\begin{proof}
+	From the weak convergence assumption on $u_n$ it follows that $\|u_n\|_\lambda^2 = \|u_n-u_0\|_\lambda^2 +\|u_0\|_\lambda^2 + o(1)$. To prove \eqref{eq:3.1} and \eqref{eq:3.2} it will be enough to check that as $n \to +\infty$
+	\begin{align}
+	&\int_{\mathbb{R}^N} \left(F(x,u_n(x))-F(x,u_n(x)-u_0(x))-F(x,u_0(x)) \right) dx =o(1) \label{eq:3.4} \\
+	&\int_{\mathbb{R}^N} \xi(x)\left(|u_n(x)|^p - |u_n(x) - u_0(x)|^p -|u_0(x)|^p \right) dx =o(1) \label{eq:3.5} \\
+	&\int_{\mathbb{R}^N} \left(f(x,u_n(x)) -f(x,u_n(x)-u_0(x))-f(x,u_0(x)) \right)  \phi(x)\, dx =o(1) \label{eq:3.6}
+\end{align}
+and	
+\begin{multline}	
+\int_{\mathbb{R}^N} \xi(x) (|u_n(x)|^{p-2}u_n(x) -|u_n(x)-u_0(x)|^{p-2}(u_n(x)-u_0(x))-|u_0(x)|^{p-2}u_0(x)) \phi(x) \, dx \\
+= o(1) \label{eq:3.7}
+\end{multline}
+for all $\phi \in \mathscr{H}_\lambda$. To prove \eqref{eq:3.4} we follow an idea due to Brezis and Lieb. We define $\delta_n = u_n - u_0$ and observe that for every $\varepsilon>0$ there exists a constant $C_\varepsilon>0$ such that
+\begin{align}
+|f(x,u)| &\leqslant \varepsilon |u| + C_\varepsilon |u|^{q-1} \\
+|F(x,u)| &\leqslant \int_0^1 \left| f(x,tu) \right| |u|\, dt \leqslant \varepsilon |u|^2 + C_\varepsilon |u|^{q} \label{eq:3.9}
+\end{align}
+for every $(x,u) \in \mathbb{R}^N \times \mathbb{R}^N$. Hence
+\begin{multline*}
+\left| F(x,\delta_n + u_0) -F(x,\delta_n) \right| \leqslant \int_0^1 |f(x,\delta_n + \zeta u_0)| |u_0|\, d\zeta
+\\
+\leqslant \int_0^1 \left( \varepsilon |\delta_n + \zeta u_0||u_0| + C_\varepsilon |\delta_n + \zeta u_0|^{q-1} |u_0| \right)  d\zeta \\
+\leqslant C \left( \varepsilon |\delta_n||u_0| + \varepsilon |u_0|^2 + C_\varepsilon |\delta_n|^{q-1} |u_0| + C_\varepsilon |\delta_n| |u_0|^{q}  \right),
+\end{multline*}
+and the Young inequality for numbers implies that
+\begin{equation*}
+\left| F(x,\delta_n + u_0) -F(x,\delta_n) \right| \leqslant 
+C \left( \varepsilon |\delta_n|^2 + \varepsilon |u_0|^2   +C_\varepsilon |\delta_n|^{q}  + C_\varepsilon |u_0|^{q}  \right).
+\end{equation*}
+Using \eqref{eq:3.9} we find similarly
+\begin{equation*}
+\left| F(x,\delta_n + u_0) -F(x,\delta_n) - F(x,u_0) \right| \leqslant 
+C \left( \varepsilon |\delta_n|^2 + \varepsilon |u_0|^2   +C_\varepsilon |\delta_n|^{q}  + C_\varepsilon |u_0|^{q}  \right).
+\end{equation*}
+We introduce
+\[
+M_n(x) = \left( F(x,\delta_n + u_0) -F(x,\delta_n) - F(x,u_0) -\varepsilon |\delta_n|^2 -C_\varepsilon |\delta_n|^{q}  \right) \lor 0,
+\]
+where $a \lor b = \max\{a,b\}$. From the previous estimates it follows that $0 \leq M_n \leq \varepsilon |u_0|^2 + C_\varepsilon |u_0|^{q} \in L^1(\mathbb{R}^N)$. We can apply Lebesgue's Theorem and conclude that $M_n \to 0$ in $L^1(\mathbb{R}^N)$. Therefore
+\begin{multline*}
+\limsup_{n \to +\infty} \int_{\mathbb{R}^N}\left| F(x,\delta_n(x) + u_0(x)) -F(x,\delta_n(x)) - F(x,u_0(x)) \right| \, dx \\
+ \leqslant C \varepsilon \limsup_{n \to +\infty} \left( \|\delta_n\|_{L^2(\mathbb{R}^N)}^2 + \|\delta_n\|_{L^q(\mathbb{R}^N)}^q \right).
+\end{multline*}
+To prove \eqref{eq:3.5} we simply remark that $\delta_n \to 0$ strongly in $L_{\mathrm{loc}}^2(\mathbb{R}^N)$. With the aid of the H\"{o}lder inequality, for any measurable set $A$ we can write
+\begin{equation*}
+\int_A \xi(x) | \delta_n(x) |^p \, dx \leqslant \left(\int_A | \xi(x) |^{\frac{2}{2-p}} \, dx \right)^{\frac{2-p}{2}}
+\left( \int_A |\delta_n(x)|^2 \, dx 
+\right)^{\frac{p}{2}}.
+\end{equation*}
+We take $A=\mathbb{R}^N \setminus B(0,R)$ for a sufficiently large radius $R$ in such a way that $\int_{\mathbb{R}^N\setminus B(0,R)} | \xi(x) |^{\frac{2}{2-p}} \, dx$ is as small as we like. On $B(0,R)$ the term $\int_A |\delta_n(x)|^2 \, dx$ is small. We have proved that
+\[
+\int_{\mathbb{R}^N} \xi(x) |\delta_n(x)|^p \, dx =o(1).
+\]
+Since
+\[
+\left| \int_{\mathbb{R}^N} \xi(x) \left( |u_n(x)|^p - |u_0(x)|^p \right) \, dx \right|  \leqslant \int_{\mathbb{R}^N} \xi(x) |\delta_n(x)|^p \, dx,
+\]
+the proof of \eqref{eq:3.5} is complete. Reasoning in a very similar way we can also check the validity of \eqref{eq:3.6} and \eqref{eq:3.7}.
+The last part of the Lemma is standard, and we omit it.
+\end{proof}
+\begin{lemma} \label{lem:3.5}
+	Assume that (V3), (V4), (V5) and (f1), (f2), (f3) hold. For some $\Lambda>0$, the functional $\Phi_\lambda$ satisfies the Palais-Smale condition for any $\lambda \geqslant \Lambda$. 
+\end{lemma}
+\begin{proof}
+We follow the ideas of \cite{MR2321894}. As in the proof of Theorem \ref{th:2.3}, any Palais-Smale sequence $\{u_n\}_n$ for $\Phi_\lambda$ at level $d$ is bounded. Up to a subsequence, we may assume that $u_n \rightharpoonup u_0$ in $\mathscr{H}_\lambda$ and $u_n \to u_0$ strongly in $L^r_{\mathrm{loc}}(\mathbb{R}^N)$ for every $r \in [2,2_\alpha^*)$. Writing again $\delta_n = u_n-u_0$, assumption (V4) implies that
+\begin{equation} \label{eq:3.10}
+\int_{\mathbb{R}^N} |\delta_n(x)|^2 \, dx \leqslant \frac{1}{\lambda b} \int_{\mathbb{R}^N \setminus V^b} \lambda V(x) |\delta_n(x)|^2 \, dx + \int_{V^b} |\delta_n(x)|^2 \, dx \leqslant \frac{1}{\lambda b} \| \delta_n\|^2_{\lambda} + o(1).
+\end{equation}
+and remark that 
+\begin{align*}
+ \int_{\mathbb{R}^N} \mathscr{F}(x,\delta_n(x)) \, dx 
+ = \Phi_\lambda(\delta_n) - \frac{1}{2} D\Phi_\lambda(\delta_n)[\delta_n] - \left( \frac{1}{2} - \frac{1}{p} \right) \mu \int_{\mathbb{R}^N} \xi(x) |\delta_n(x)|^p \, dx = d - \Phi_\lambda(u_0)
+\end{align*}
+by \eqref{eq:3.3}. Let
+\[
+N = \sup_{n \in \mathbb{N}} \left| \int_{\mathbb{R}^N} \mathscr{F}(x,\delta_n(x)) \, dx \right|.
+\]
+ Let \(\sigma = 2\tau / (\tau-1) \in (2,2_\alpha^*)\); from the H\"{o}lder inequality and Lemma \ref{lem:1.1},
+\begin{multline}\label{eq:3.12}
+\int_{|\delta_n| \geqslant R} f(x,\delta_n(x)) \delta_n(x) \, dx \leqslant \left(
+\int_{|\delta_n| \geqslant R} \left| \frac{f(x,\delta_n(x))}{\delta_n(x)} \right|^\tau dx 
+\right)^{1/\tau}
+\left(
+\int_{|\delta_n| \geqslant R} |\delta_n(x)|^\sigma \, dx
+\right)^{2/\sigma} \\
+\leqslant
+\left(
+\int_{|\delta_n| \geqslant R} \mathscr{F}(x,\delta_n(x)) \, dx
+\right)^{1/\tau} \|\delta_n\|_{L^\sigma(\mathbb{R}^N)}^2
+\leqslant N^{1/\tau} \|\delta_n\|_{L^\sigma(\mathbb{R}^N)}^2.
+\end{multline}
+We want to estimate the last norm of $\delta_n$ in terms of the norm in $\mathscr{H}_\lambda$. To do this, we pick $\nu \in (\sigma,2_\alpha^*)$ and interpolate:
+\begin{multline*}
+\|\delta_n\|_{L^\sigma(\mathbb{R}^N)}^\sigma \leqslant \|\delta_n\|_{L^2(\mathbb{R}^N)}^{\frac{2(\nu-\sigma)}{\nu-2}} \|\delta_n\|_{L^\nu(\mathbb{R}^N)}^{\frac{\nu (\sigma-2)}{\nu-2}}
+\leqslant \left( \frac{1}{\lambda b} \right)^{\frac{\nu-\sigma}{\nu -2}} \|\delta_n\|_\lambda^{\frac{2(\nu-\sigma)}{\nu-2}}
+\left(
+\gamma_0 \gamma_\nu \|\delta_n\|_\lambda 
+\right)^{\frac{\nu-\sigma}{\nu -2}} + o(1) \\
+\leqslant \left(
+\gamma_0 \gamma_\nu 
+\right)^{\frac{\nu-\sigma}{\nu -2}} \left( \frac{1}{\lambda b} \right)^{\frac{\nu-\sigma}{\nu -2}}
+\|\delta_n\|_\lambda^\sigma + o(1),
+\end{multline*}
+where we have used \eqref{eq:3.10}. Going back to \eqref{eq:3.12}, for a suitable positive constant $C$,
+\begin{equation}\label{eq:3.13}
+\int_{|\delta_n| \geqslant R} f(x,\delta_n(x)) \delta_n(x) \, dx \leqslant \left(\frac{C}{\lambda b}\right)^{\frac{2(\nu-\sigma)}{\sigma(\nu-2)}} \|\delta_n\|_\lambda^2 +o(1).
+\end{equation}
+On the other hand,
+\begin{equation} \label{eq:3.14}
+\int_{|\delta_n| \leqslant R} f(x,\delta_n(x)) \delta_n(x) \, dx \leqslant
+\int_{|\delta_n| \leqslant R} \left( \varepsilon+ C_\varepsilon R^{q-2} \right) |\delta_n(x)|^2 \, dx \leqslant \frac{C_\varepsilon R^{q-2}}{\lambda b} \|\delta_n\|_\lambda^2 + o(1).
+\end{equation}
+Combining now \eqref{eq:3.13} with \eqref{eq:3.14} we obtain
+\begin{multline*}
+o(1) = D\Phi_\lambda (\delta_n)[\delta_n] = \|\delta_n\|_\lambda^2 - \int_{\mathbb{R}^N} f(x,\delta_n(x)) \delta_n(x)\, dx - \mu \int_{\mathbb{R}^N} \xi(x) |\delta_n(x)|^p \, dx \\
+\geqslant
+\left(
+1 - C \left( \frac{1}{\lambda b} - \left(\frac{1}{\lambda b} \right)^{\frac{2(\nu-\sigma)}{\sigma(\nu-2)}} \right)
+\right) \|\delta_n\|_\lambda^2 +o(1).
+\end{multline*}
+It now suffices to choose $\Lambda>0$ so large that the last bracket is strictly positive for every $\lambda \geqslant \Lambda$, and we deduce that $\delta_n =o(1)$ as $n \to +\infty$.
+\end{proof}
+We can now prove the main result of this section.
+\begin{proof}[Proof of Theorem \ref{th:3.1}]
+	First of all, we fix $\mu_0$ such that $\Phi_\lambda$ has the mountain-pass geometry, see Lemma \ref{lem:2.4}. Now we can introduce the value
+	\[
+	c_\lambda = \inf_{\gamma \in \Gamma_\lambda} \sup_{t \in [0,1]} \Phi_\lambda(\gamma(t)),
+	\]
+	where $\Gamma_\lambda = \left\{ \gamma \in C([0,1],\mathscr{H}_\lambda) \mid \gamma(0)=0, \ \gamma(1)=e \right\}$. By Lemma \ref{lem:3.5} there exists a number $\lambda_0>0$ such that $\Phi_\lambda$ satisfies the Palais-Smale condition at level $c_\lambda$ for any $\lambda \geqslant \lambda_0$. Hence a first solution to equation \eqref{eq:1} arises as a mountain-pass point at level $c_\lambda>0$.
+	
+	To construct the second solution, we remark that there always exists a function $\phi_0 \in \mathscr{H}_\lambda$ such that $\int_{\mathbb{R}^N} \xi(x) |\phi_0(x)|^p \, dx >0$. On the straight half-line $t \mapsto t \phi_0$, we have
+	\[
+	\Phi_\lambda(t \phi_0) = \frac{t^2}{2} \|\phi_0\|_\lambda^2 - \int_{\mathbb{R}^N} F(x,t\phi_0(x))\, dx - \frac{\mu t^p}{p} \int_{\mathbb{R}^N} \xi(x) |\phi_0(x)|^p \, dx.
+	\]
+	Since $F$ is non-negative and $1<p<2$, there exists $t_0$ close to zero (without loss of generality we assume that $t < \varrho$) such that $\Phi_\lambda(t_0 \phi_0)<0$. On the contrary, we already know that $\Phi_\lambda(u) >0$ if $\|u\|_\lambda = \varrho$. For
+	\[
+	m_\lambda = \inf \left\{ \Phi_\lambda (u) \mid u \in \overline{B(0,\varrho)}
+	\right\}  <0
+	\]
+	there exists a sequence $\{v_n\}_n$ in $\mathscr{H}_\lambda$ such that $\Phi_\lambda(v_n) \to m_\lambda<0$. In particular, it is not restrictive to assume that $v_n$ is far from the boundary of $\overline{B(0,\varrho)}$. Hence the Ekeland Variational Principle implies that we may assume without loss of generality that $D\Phi_\lambda(v_n) =o(1)$ as $n \to +\infty$.
+	
+	Taking as usual $\lambda$ large and $\mu$ small enough, the Palais-Smale condition is satified at level $m_\lambda$, so that we may assume $v_n \to v_0$ strongly in $\mathscr{H}_\lambda$. Then $v_0$ is another solution of \eqref{eq:1} at level $m_\lambda<0$, and proof is complete.
+\end{proof}
+
+
+
+\begin{bibdiv}
+
+\begin{biblist}
+ \bib{Adams}{book}{
+   author={Adams, David R.},
+   author={Hedberg, Lars Inge},
+   title={Function spaces and potential theory},
+   series={Grundlehren der Mathematischen Wissenschaften [Fundamental
+   Principles of Mathematical Sciences]},
+   volume={314},
+   publisher={Springer-Verlag, Berlin},
+   date={1996},
+   pages={xii+366},
+   isbn={3-540-57060-8},
+   review={\MR{1411441 (97j:46024)}},
+   doi={10.1007/978-3-662-03282-4},
+}
+
+%\bib{Alves}{article}{
+%   author={Alves, Claudianor O.},
+%   author={Souto, Marco A. S.},
+%   title={Existence of solutions for a class of nonlinear Schr\"odinger
+%   equations with potential vanishing at infinity},
+%   journal={J. Differential Equations},
+%   volume={254},
+%   date={2013},
+%   number={4},
+%   pages={1977--1991},
+%   issn={0022-0396},
+%   review={\MR{3003299}},
+%   doi={10.1016/j.jde.2012.11.013},
+%}
+
+\bib{MR0481616}{article}{
+	author={Benci, V.},
+	author={Fortunato, D.},
+	title={Discreteness conditions of the spectrum of Schr\"odinger
+		operators},
+	journal={J. Math. Anal. Appl.},
+	volume={64},
+	date={1978},
+	number={3},
+	pages={695--700},
+	issn={0022-247x},
+	review={\MR{0481616}},
+}
+
+%\bib{BerLio1}{article}{
+%   author={Berestycki, H.},
+%   author={Lions, P.-L.},
+%   title={Nonlinear scalar field equations. I. Existence of a ground state},
+%   journal={Arch. Rational Mech. Anal.},
+%   volume={82},
+%   date={1983},
+%   number={4},
+%   pages={313--345},
+%   issn={0003-9527},
+%   review={\MR{695535 (84h:35054a)}},
+%   doi={10.1007/BF00250555},
+%}
+
+%\bib{BerLio2}{article}{
+%   author={Berestycki, H.},
+%   author={Lions, P.-L.},
+%   title={Nonlinear scalar field equations. II. Existence of infinitely many
+%   solutions},
+%   journal={Arch. Rational Mech. Anal.},
+%   volume={82},
+%   date={1983},
+%   number={4},
+%   pages={347--375},
+%   issn={0003-9527},
+%   review={\MR{695536 (84h:35054b)}},
+%   doi={10.1007/BF00250556},
+%}
+
+\bib{MR0312241}{article}{
+	author={Berger, Melvyn S.},
+	author={Schechter, Martin},
+	title={Embedding theorems and quasi-linear elliptic boundary value
+		problems for unbounded domains},
+	journal={Trans. Amer. Math. Soc.},
+	volume={172},
+	date={1972},
+	pages={261--278},
+	issn={0002-9947},
+	review={\MR{0312241}},
+}
+
+%\bib{Brown}{article}{
+%   author={Brown, Kenneth J.},
+%   author={Wu, Tsung-Fang},
+%   title={A fibering map approach to a semilinear elliptic boundary value
+%   problem},
+%   journal={Electron. J. Differential Equations},
+%   date={2007},
+%   pages={No. 69, 9},
+%   issn={1072-6691},
+%   review={\MR{2308869 (2008a:35101)}},
+%}
+
+\bib{Bucur}{article}{
+ author={Bucur, Claudia},
+ author={Valdinoci, Enrico},
+ title={Nonlocal diffusion and applications},
+ eprint={arXiv:1504.08292},
+}
+
+\bib{Carmona}{article}{
+   author={Carmona, Ren{\'e}},
+   author={Masters, Wen Chen},
+   author={Simon, Barry},
+   title={Relativistic Schr\"odinger operators: asymptotic behavior of the
+   eigenfunctions},
+   journal={J. Funct. Anal.},
+   volume={91},
+   date={1990},
+   number={1},
+   pages={117--142},
+   issn={0022-1236},
+   review={\MR{1054115 (91i:35139)}},
+   doi={10.1016/0022-1236(90)90049-Q},
+}
+
+%\bib{Cerami}{article}{
+%  author={Cerami, Giovanna},
+%  title={Un criterio di esistenza per i punti critici su variet\`a illimitate},
+%  journal={Rend. Acad. Sci. Lett. Istituto Lombardo},
+%  volume={112},
+%  year={1978},
+%  pages={332--336},
+%}
+
+%\bib{Chabrowski}{article}{
+%   author={Chabrowski, J.},
+%   title={Concentration-compactness principle at infinity and semilinear
+%   elliptic equations involving critical and subcritical Sobolev exponents},
+%   journal={Calc. Var. Partial Differential Equations},
+%   volume={3},
+%   date={1995},
+%   number={4},
+%   pages={493--512},
+%   issn={0944-2669},
+%   review={\MR{1385297 (97j:35029)}},
+%   doi={10.1007/BF01187898},
+%}
+
+%\bib{Chang}{article}{
+%   author={Chang, X.},
+%   author={Wang, Z.-Q.},
+%   title={Ground state of scalar field equations involving a fractional
+%   Laplacian with general nonlinearity},
+%   journal={Nonlinearity},
+%   volume={26},
+%   date={2013},
+%   number={2},
+%   pages={479--494},
+%   issn={0951-7715},
+%   review={\MR{3007900}},
+%   doi={10.1088/0951-7715/26/2/479},
+%}
+
+\bib{CingolaniSecchi1}{article}{
+   author={Cingolani, Silvia},
+   author={Secchi, Simone},
+   title={Ground states for the pseudo-relativistic Hartree equation with
+   external potential},
+   journal={Proc. Roy. Soc. Edinburgh Sect. A},
+   volume={145},
+   date={2015},
+   number={1},
+   pages={73--90},
+   issn={0308-2105},
+   review={\MR{3304576}},
+   doi={10.1017/S0308210513000450},
+}
+
+\bib{CingolaniSecchi2}{article}{
+   author={Cingolani, Silvia},
+   author={Secchi, Simone},
+   title={Semiclassical analysis for pseudorelativistic Hartree equations},
+   journal={J. Differential Equations},
+   volume={258},
+   date={2015},
+   pages={4156--4179},
+   doi={10.1016/j.jde.2015.01.029},
+}
+
+\bib{CZN1}{article}{
+   author={Coti Zelati, Vittorio},
+   author={Nolasco, Margherita},
+   title={Existence of ground states for nonlinear, pseudo-relativistic
+   Schr\"odinger equations},
+   journal={Atti Accad. Naz. Lincei Cl. Sci. Fis. Mat. Natur. Rend. Lincei
+   (9) Mat. Appl.},
+   volume={22},
+   date={2011},
+   number={1},
+   pages={51--72},
+   issn={1120-6330},
+   review={\MR{2799908 (2012d:35346)}},
+   doi={10.4171/RLM/587},
+}
+
+\bib{CZN2}{article}{
+   author={Coti Zelati, Vittorio},
+   author={Nolasco, Margherita},
+   title={Ground states for pseudo-relativistic Hartree equations of
+   critical type},
+   journal={Rev. Mat. Iberoam.},
+   volume={29},
+   date={2013},
+   number={4},
+   pages={1421--1436},
+   issn={0213-2230},
+   review={\MR{3148610}},
+   doi={10.4171/RMI/763},
+}
+
+\bib{MR2321894}{article}{
+	author={Ding, Yanheng},
+	author={Szulkin, Andrzej},
+	title={Bound states for semilinear Schr\"odinger equations with
+		sign-changing potential},
+	journal={Calc. Var. Partial Differential Equations},
+	volume={29},
+	date={2007},
+	number={3},
+	pages={397--419},
+	issn={0944-2669},
+	review={\MR{2321894}},
+	doi={10.1007/s00526-006-0071-8},
+}
+
+\bib{Fall}{article}{
+  author={Fall, M.M.},
+  author={Felli, V.},
+  title={Unique continuation properties for relativistic Schr\"{o}dinger operators with a singular potential},
+  eprint={arXiv:1312.6516},
+}
+
+\bib{Felmer}{article}{
+   author={Felmer, Patricio},
+   author={Quaas, Alexander},
+   author={Tan, Jinggang},
+   title={Positive solutions of the nonlinear Schr\"odinger equation with
+   the fractional Laplacian},
+   journal={Proc. Roy. Soc. Edinburgh Sect. A},
+   volume={142},
+   date={2012},
+   number={6},
+   pages={1237--1262},
+   issn={0308-2105},
+   review={\MR{3002595}},
+   doi={10.1017/S0308210511000746},
+}
+
+\bib{FelmerVergara}{article}{
+  author={Felmer, Patricio},
+  author={Vergara, I.},
+  title={Scalar field equations with non-local diffusion},
+  journal={NoDEA},
+  date={2015},
+  status={to appear},
+}
+
+\bib{Frank}{article}{
+  author={Frank, Rupert L},
+  author={Lenzmann, Enno},
+  author={Silvestre, Luis},
+  title={Uniqueness of radial solutions for the fractional Laplacian},
+  year={2013},
+  eprint={arXiv:1302.2652},
+}
+
+%\bib{Gale}{article}{
+%   author={Gal{\'e}, Jos{\'e} E.},
+%   author={Miana, Pedro J.},
+%   author={Stinga, Pablo Ra{\'u}l},
+%   title={Extension problem and fractional operators: semigroups and wave
+%   equations},
+%   journal={J. Evol. Equ.},
+%   volume={13},
+%   date={2013},
+%   number={2},
+%   pages={343--368},
+%   issn={1424-3199},
+%   review={\MR{3056307}},
+%   doi={10.1007/s00028-013-0182-6},
+%}
+
+%\bib{Gou}{article}{
+%	author={Gou, Tian-Xiang},
+%	author={Sun, Hong-Rui},
+%	title={Solutions of nonlinear Schr\"{o}dinger equation with fractional Laplacian without the Ambrosetti--Rabinowitz condition},
+%	journal={Applied Mathematics and Computation},
+%	volume={257},
+%	date={2015},
+%	pages={409--416},
+%	doi={10.1016/j.amc.2014.09.031},
+%}
+
+%\bib{Goyal}{article}{
+%  author={Goyal, S.},
+%  author={Sreenadh, K.},
+%  title={A Nehari manifold for non-local elliptic operator with concave-convex non-linearities and sign-changing weight function},
+%  eprint={arXiv:1307.5149},
+%}
+
+%\bib{Jeanjean}{article}{
+%   author={Jeanjean, Louis},
+%   author={Tanaka, Kazunaga},
+%   title={A remark on least energy solutions in ${\mathbb{R}}^N$},
+%   journal={Proc. Amer. Math. Soc.},
+%   volume={131},
+%   date={2003},
+%   number={8},
+%   pages={2399--2408 (electronic)},
+%   issn={0002-9939},
+%   review={\MR{1974637 (2004c:35127)}},
+%   doi={10.1090/S0002-9939-02-06821-1},
+%}
+
+\bib{Laskin1}{article}{
+   author={Laskin, Nikolai},
+   title={Fractional quantum mechanics and L\'evy path integrals},
+   journal={Phys. Lett. A},
+   volume={268},
+   date={2000},
+   number={4-6},
+   pages={298--305},
+   issn={0375-9601},
+   review={\MR{1755089 (2000m:81097)}},
+   doi={10.1016/S0375-9601(00)00201-2},
+}
+
+\bib{Laskin2}{article}{
+   author={Laskin, Nick},
+   title={Fractional Schr\"odinger equation},
+   journal={Phys. Rev. E (3)},
+   volume={66},
+   date={2002},
+   number={5},
+   pages={056108, 7},
+   issn={1539-3755},
+   review={\MR{1948569 (2003k:81043)}},
+   doi={10.1103/PhysRevE.66.056108},
+}
+
+%\bib{Lieb}{article}{
+%   author={Lieb, Elliott H.},
+%   title={Existence and uniqueness of the minimizing solution of Choquard's
+%   nonlinear equation},
+%   journal={Studies in Appl. Math.},
+%   volume={57},
+%   date={1976/77},
+%   number={2},
+%   pages={93--105},
+%   review={\MR{0471785 (57 \#11508)}},
+%}
+%
+%\bib{LiebYau}{article}{
+%   author={Lieb, Elliott H.},
+%   author={Yau, Horng-Tzer},
+%   title={The Chandrasekhar theory of stellar collapse as the limit of
+%   quantum mechanics},
+%   journal={Comm. Math. Phys.},
+%   volume={112},
+%   date={1987},
+%   number={1},
+%   pages={147--174},
+%   issn={0010-3616},
+%   review={\MR{904142 (89b:82014)}},
+%}
+
+\bib{Lions}{book}{
+	author={Lions, Pierre-Louis},
+	author={Magenes, Enrico},
+	title={Probl\`emes aux limites non-homog\`enes et applications},
+	volume={1},
+	publisher={Dunod, Paris},
+	year={1969},
+}
+
+%\bib{Li}{article}{
+%   author={Ma, Li},
+%   author={Chen, Dezhong},
+%   title={Radial symmetry and monotonicity for an integral equation},
+%   journal={J. Math. Anal. Appl.},
+%   volume={342},
+%   date={2008},
+%   number={2},
+%   pages={943--949},
+%   issn={0022-247X},
+%   review={\MR{2445251 (2009m:35151)}},
+%   doi={10.1016/j.jmaa.2007.12.064},
+%}
+
+%\bib{Li2}{article}{
+%   author={Ma, Li},
+%   author={Chen, Dezhong},
+%   title={Radial symmetry and uniqueness for positive solutions of a
+%   Schr\"odinger type system},
+%   journal={Math. Comput. Modelling},
+%   volume={49},
+%   date={2009},
+%   number={1-2},
+%   pages={379--385},
+%   issn={0895-7177},
+%   review={\MR{2480059 (2010a:35072)}},
+%   doi={10.1016/j.mcm.2008.06.010},
+%}
+
+\bib{Palatucci}{article}{
+   author={Palatucci, Giampiero},
+   author={Pisante, Adriano},
+   title={Improved Sobolev embeddings, profile decomposition, and
+   concentration-compactness for fractional Sobolev spaces},
+   journal={Calc. Var. Partial Differential Equations},
+   volume={50},
+   date={2014},
+   number={3-4},
+   pages={799--829},
+   issn={0944-2669},
+   review={\MR{3216834}},
+   doi={10.1007/s00526-013-0656-y},
+}
+
+%\bib{Rabinowitz}{article}{
+%   author={Rabinowitz, Paul H.},
+%   title={On a class of nonlinear Schr\"odinger equations},
+%   journal={Z. Angew. Math. Phys.},
+%   volume={43},
+%   date={1992},
+%   number={2},
+%   pages={270--291},
+%   issn={0044-2275},
+%   review={\MR{1162728 (93h:35194)}},
+%   doi={10.1007/BF00946631},
+%}
+
+%\bib{Ros-Oton}{article}{
+%   author={Ros-Oton, Xavier},
+%   author={Serra, Joaquim},
+%   title={The Pohozaev identity for the fractional Laplacian},
+%   journal={Arch. Ration. Mech. Anal.},
+%   volume={213},
+%   date={2014},
+%   number={2},
+%   pages={587--628},
+%   issn={0003-9527},
+%   review={\MR{3211861}},
+%   doi={10.1007/s00205-014-0740-2},
+%} 
+
+%\bib{Sickel}{article}{
+%   author={Sickel, Winfried},
+%   author={Skrzypczak, Leszek},
+%   title={Radial subspaces of Besov and Lizorkin-Triebel classes: extended
+%   Strauss lemma and compactness of embeddings},
+%   journal={J. Fourier Anal. Appl.},
+%   volume={6},
+%   date={2000},
+%   number={6},
+%   pages={639--662},
+%   issn={1069-5869},
+%   review={\MR{1790248 (2002h:46056)}},
+%   doi={10.1007/BF02510700},
+%}
+
+\bib{Stein}{book}{
+   author={Stein, Elias M.},
+   title={Singular integrals and differentiability properties of functions},
+   series={Princeton Mathematical Series, No. 30},
+   publisher={Princeton University Press, Princeton, N.J.},
+   date={1970},
+   pages={xiv+290},
+   review={\MR{0290095 (44 \#7280)}},
+}
+
+\bib{Stinga}{article}{
+   author={Stinga, Pablo Ra{\'u}l},
+   author={Torrea, Jos{\'e} Luis},
+   title={Extension problem and Harnack's inequality for some fractional
+   operators},
+   journal={Comm. Partial Differential Equations},
+   volume={35},
+   date={2010},
+   number={11},
+   pages={2092--2122},
+   issn={0360-5302},
+   review={\MR{2754080 (2012c:35456)}},
+   doi={10.1080/03605301003735680},
+}
+
+\bib{Strichartz}{article}{
+   author={Strichartz, Robert S.},
+   title={Analysis of the Laplacian on the complete Riemannian manifold},
+   journal={J. Funct. Anal.},
+   volume={52},
+   date={1983},
+   number={1},
+   pages={48--79},
+   issn={0022-1236},
+   review={\MR{705991 (84m:58138)}},
+   doi={10.1016/0022-1236(83)90090-3},
+}
+%
+%
+%\bib{Stuart}{article}{
+%   author={Stuart, C. A.},
+%   title={Bifurcation for Neumann problems without eigenvalues},
+%   journal={J. Differential Equations},
+%   volume={36},
+%   date={1980},
+%   number={3},
+%   pages={391--407},
+%   issn={0022-0396},
+%   review={\MR{576158 (81m:47089)}},
+%   doi={10.1016/0022-0396(80)90057-1},
+%}
+
+
+\bib{Tan}{article}{
+   author={Tan, Jinggang},
+   author={Wang, Ying},
+   author={Yang, Jianfu},
+   title={Nonlinear fractional field equations},
+   journal={Nonlinear Anal.},
+   volume={75},
+   date={2012},
+   number={4},
+   pages={2098--2110},
+   issn={0362-546X},
+   review={\MR{2870902 (2012k:35585)}},
+   doi={10.1016/j.na.2011.10.010},
+}
+
+
+\end{biblist}
+
+
+\end{bibdiv}
+
+
+
+
+
+
+\end{document}
